@@ -1,0 +1,41 @@
+# ~/.screenrc
+
+# ── Appearance ────────────────────────────────────────────────────────────────
+# No startup message
+startup_message off
+
+# Terminal settings
+defutf8 on
+defscrollback 10000
+term screen-256color
+defbce on
+truecolor on
+
+# ── Status bar ────────────────────────────────────────────────────────────────
+# backtick ID  lifespan  refresh  command
+#   lifespan : how long (s) the cached value stays valid
+#   refresh  : how often (s) Screen re-runs the command
+backtick 1 5 5 /Users/akira/bin/ram_usage
+backtick 2 5 5 /Users/akira/bin/cpu_usage
+
+# hardstatus line format:
+#   %{= kw}  – reset colours (black bg, white fg)
+#   %S       – session name
+#   %1`      – backtick 1 output (RAM)
+#   %2`      – backtick 2 output (CPU)
+#   %c       – current time (HH:MM)
+hardstatus alwayslastline
+hardstatus string '%{= kG} %S %{= kw}%=%1` | %2` %{= kY}%c '
+
+# caption disabled – single status bar only
+
+# ── Key bindings ──────────────────────────────────────────────────────────────
+# Ctrl-a a sends a literal Ctrl-a
+bind a stuff "\001"
+
+# ── Miscellaneous ─────────────────────────────────────────────────────────────
+# Disable visual bell
+vbell off
+
+# Mouse scrolling support (if your terminal supports it)
+# termcapinfo xterm* ti@:te@
